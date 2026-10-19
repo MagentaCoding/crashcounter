@@ -7,7 +7,7 @@ How to set up or rather install the CrashCounter:
 ## 1. Via GitHub Installer-PS1
 You're selected: Your mother   
 Setup steps:
-1. Go the the release page
+1. Go to the release page
 2. Download the Installer.ps1
 3. Open Terminal via Windows Key and then type Terminal, if it isn't installed press Win + X and select Microsoft PowerShell (select "Microsoft PowerShell (Administrator)" ONLY if you're sure you want to install it to/in the entire system for every user)
 4. Execute this command: ```cd Downloads```   
