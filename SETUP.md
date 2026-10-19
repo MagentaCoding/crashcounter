@@ -13,7 +13,7 @@ Setup steps:
 4. Execute this command: ```cd Downloads```   
     4.1 If you're not in your downloads folder because you started somewhere else for example in C:\Windows\System32 then execute ```cd $env:USERPROFILE\Downloads```
 5. Then execute .\Installer.ps1   
-    5.1 When PowerShell says to you that executing not knows scripts isn't allowed for security reasons then execute ```Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser``` (**WARNING: THIS DISABLES YOUR EXECUTION POLICY FOR THE POWERSHELL SESSION YOU'RE CURRENTLY IN**) or execute ```Unblock-File -Path ".\Installer.ps1"```
+    5.1 When PowerShell says to you that executing not knows scripts isn't allowed for security reasons then execute ```Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser``` (**WARNING: THIS DISABLES YOUR EXECUTION POLICY FOR THE POWERSHELL SESSION YOU'RE CURRENTLY IN** and it's not recommended) or execute ```Unblock-File -Path ".\Installer.ps1"```
 6. Select installation language
 7. Follow installation instructions
 8. Wait for installation to finish
