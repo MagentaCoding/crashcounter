@@ -40,7 +40,7 @@ Setup steps:
 4. Press STRG + C
 5. Open Explorer (to open Explorer search it, press the Explorer Icon on the Taskbar or Press Win + E)
 6. Create a new file where you like
-7. Name it how you want but is has to end on .ps1   
+7. Name it whatever you want, but it must end in .ps1   
     7.1 If you're not seeing any file extensions (like .txt, .exe and so on) press on the "Display"-Tab and then check the box "File name extension" (or similar)
 8. Open Terminal via Windows Key and then type Terminal, if it isn't installed press Win + X and select Microsoft PowerShell (select "Microsoft PowerShell (Administrator)" ONLY if you're sure you want to install it to/in the entire system for every user)
 9. Execute this command: ```cd Downloads```   
