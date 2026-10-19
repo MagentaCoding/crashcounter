@@ -102,10 +102,10 @@ function DEUTSCH {
     Write-Host "Der Ordner wurde erfolgreich erstellt: $InstallationPath" -ForegroundColor Green
     Write-Host "Die Funktion wird nun heruntergeladen..." -ForegroundColor Green
     Write-Host "Download-Server: crashcounter.magentaweb.de" -ForegroundColor Cyan
-    Write-Host "Download-URL: https://crashcounter.magentaweb.de/CC.psd1" -ForegroundColor Cyan
+    Write-Host "Download-URL: https://latest.crashcounter.magentaweb.de/" -ForegroundColor Cyan
     Write-Host "Lade herunter: CC.psd1 (PowerShell Modul Manifest)" -ForegroundColor Cyan
     try {
-        Invoke-WebRequest -Uri "https://crashcounter.magentaweb.de/CC.psd1" -OutFile "$InstallationPath\CC.psd1"
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/CC.psd1" -OutFile "$InstallationPath\CC.psd1"
     } catch {
         Write-Host "Beim Herunterladen des PowerShell Modul Manifests ist ein Fehler aufgetreten. Bite überprüfen sie ihre Internetverbindung und pausieren sie ggf. alle Steam-Downloads da diese die Browsingqualität bemerkbar beinflussen können." -ForegroundColor Red
         exit
@@ -113,7 +113,7 @@ function DEUTSCH {
     Write-Host "Erfolgreich heruntergeladen: CC.psd1" -ForegroundColor Green
     Write-Host "Lade herunter: CC.psm1 (PowerShell Modul)" -ForegroundColor Cyan
     try {
-        Invoke-WebRequest -Uri "https://crashcounter.magentaweb.de/CC.psm1" -OutFile "$InstallationPath\CC.psm1"
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/CC.psm1" -OutFile "$InstallationPath\CC.psm1"
     } catch {
         Write-Host "Beim Herunterladen des PowerShell Moduls ist ein Fehler aufgetreten. Bite überprüfen sie ihre Internetverbindung und pausieren sie ggf. alle Steam-Downloads da diese die Browsingqualität bemerkbar beinflussen können." -ForegroundColor Red
         exit
@@ -121,7 +121,7 @@ function DEUTSCH {
     Write-Host "Erfolgreich heruntergeladen: CC.psm1" -ForegroundColor Green
     Write-Host "Lade herunter: DE.psd1 (PowerShell Sprachdatei)" -ForegroundColor Cyan
     try {
-        Invoke-WebRequest -Uri "https://crashcounter.magentaweb.de/DE.psd1" -OutFile "$InstallationPath\Lang.psd1"
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/DE.psd1" -OutFile "$InstallationPath\Lang.psd1"
     } catch {
         Write-Host "Beim Herunterladen der Deutschen Sprachdatei ist ein Fehler aufgetreten. Bite überprüfen sie ihre Internetverbindung und pausieren sie ggf. alle Steam-Downloads da diese die Browsingqualität bemerkbar beinflussen können." -ForegroundColor Red
         exit
