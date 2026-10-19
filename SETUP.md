@@ -1,8 +1,8 @@
 # Setup
 How to set up or rather install the CrashCounter:
 1. [Via GitHub Installer-PS1](#1-via-github-installer-ps1)
-2. [Via Direct Installer-PS1]
-3. [Via Copypaste Installer-PS1]
+2. [Via Direct Installer-PS1](#2-via-direct-installer-ps1)
+3. [Via Copypaste Installer-PS1](#3-via-copypaste-installer-ps1)
 
 ## 1. Via GitHub Installer-PS1
 You're selected: Your mother
