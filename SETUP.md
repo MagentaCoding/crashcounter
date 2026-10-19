@@ -5,7 +5,7 @@ How to set up or rather install the CrashCounter:
 3. [Via Copypaste Installer-PS1](#3-via-copypaste-installer-ps1)
 
 ## 1. Via GitHub Installer-PS1
-You're selected: Your mother
+You're selected: Your mother   
 Setup steps:
 1. Go the the release page
 2. Download the Installer.ps1
