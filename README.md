@@ -1,6 +1,6 @@
 # CrashCounter
-Welcome to CrashCounter, a crash counter where you have to mannualy add your windows BSOD (for that it was originally planned to be used for but whatever) so you don't get lazy.
-So, this is the README, with somethings for you:
+Welcome to CrashCounter, a crash counter where you have to manually add your windows BSOD (for that it was originally planned to be used for but whatever) so you don't get lazy.
+So, this is the README, with some things for you:
 
 ## Setup
 Go to the SETUP.md or the Setup-Tab if GitHub has one
@@ -12,10 +12,10 @@ It's a simple PowerShell script even not so well informed programmers and devs s
 See [Setup](#setup)
 
 ## Commands
-Thats something I can help you with!
+That's something I can help you with!
 **The Commands:**
 1. Add-Crash   
-    It's optional to privide the parameters but you'll get asked from PowerShell interactivly, at least PowerShell 7 did that
+    It's optional to provide the parameters but you'll get asked from PowerShell interactively, at least PowerShell 7 did that
     Parameters:
     1. -Software   
         Please enter the Software name, such as Discord or NVIDIA Control Panel or Skibidi Roblox Hackclient Free Robux x64 or so
