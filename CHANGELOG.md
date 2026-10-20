@@ -1,6 +1,6 @@
 # Changelog
 ## v1.0.1 – Language Update I
-Adde English to the installer, womp womp
+Added English to the installer, womp womp
 ## v1.0.0 – Initial Release
 I don't know why I made this, it was once a private project made for me, in the case of an BSOD form Windows, now it on GitHub, with an installer... And a module importer... Feel free to contribute or use it if you want. And I also don't know why I published this on Github... Well, anyway more information is in the README.md which is [here](https://github.com/MagentaCoding/crashcounter/blob/main/README.md) and [here](https://github.com/MagentaCoding/crashcounter/)
 
