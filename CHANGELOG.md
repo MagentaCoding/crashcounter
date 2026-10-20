@@ -19,4 +19,4 @@ The Installer provides an integrated checksum validator (via my checksum API) fo
 
 ---
 
-**Full Changelog**: https://github.com/MagentaCoding/crashcounter/commits/main
+**Full Changelog**: https://github.com/MagentaCoding/crashcounter/blob/main/CHANGELOG.md
