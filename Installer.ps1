@@ -75,6 +75,355 @@ function ENGLISH {
         Write-Host "Invalid input. Restart installation script." -ForegroundColor Red
         exit
     }
+    Write-Host "The directory for the installation is getting created..." -ForegroundColor Green
+    New-Item -ItemType Directory -Path $InstallationPath -Force | Out-Null
+    Write-Host "The directory has been successfully created: $InstallationPath" -ForegroundColor Green
+    Write-Host "The function is being downloaded..." -ForegroundColor Green
+    Write-Host "Download-Server: crashcounter.magentaweb.de" -ForegroundColor Cyan
+    Write-Host "Download-URL: https://latest.crashcounter.magentaweb.de/" -ForegroundColor Cyan
+    Write-Host "Downloading: CC.psd1 (PowerShell Module Manifest)" -ForegroundColor Cyan
+    try {
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/CC.psd1" -OutFile "$InstallationPath\CC.psd1"
+    } catch {
+        Write-Host "During the download of the PowerShell Module Manifest occurred an error. Please check your internet connectivity and pause, if needed, and Steam Downloads or limit the download speed because they can visibly impact the browsing quality." -ForegroundColor Red
+        exit
+    }
+    Write-Host "Successfully downloaded: CC.psd1" -ForegroundColor Green
+    Write-Host "Downloading: CC.psm1 (PowerShell Module)" -ForegroundColor Cyan
+    try {
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/CC.psm1" -OutFile "$InstallationPath\CC.psm1"
+    } catch {
+        Write-Host "During the download of the PowerShell Module an error occurred. Please check your internet connectivity and pause any downloads that Steam is executing because it can visibly impact your browsing performance." -ForegroundColor Red
+        exit
+    }
+    Write-Host "Successfully downloaded: CC.psm1" -ForegroundColor Green
+    Write-Host "Downloading: EN.psd1 (PowerShell Language file)" -ForegroundColor Cyan
+    try {
+        Invoke-WebRequest -Uri "https://latest.crashcounter.magentaweb.de/EN.psd1" -OutFile "$InstallationPath\Lang.psd1"
+    } catch {
+        Write-Host "During the download of the English language file an error occurred. Please check your internet connectivity, pause any Steam downloads and restart your router if you want to do that." -ForegroundColor Red
+        exit
+    }
+    Write-Host "Successfully downloaded: EN.psd1" -ForegroundColor Green
+    Write-Host "The checksums of the files is getting checked..." -ForegroundColor Green
+    Write-Host "This is being done to ensure the security of your system, because therefore the checksums get checked and compromised files can be flagged." -ForegroundColor Cyan
+    Write-Host "However a complete security and system safety guarantee cannot be ensured through checksum verification alone." -ForegroundColor Yellow
+    Write-Host "The checksums are getting checked..." -ForegroundColor Green
+    cd $InstallationPath
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psd1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA1" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psd1 SHA1 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA1/CC.psd1"
+    $File = ".\CC.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA1).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV11 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV11 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA1 Check Completed"
+    Write-Host "SHA1 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA1 --> SHA256"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psd1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA256" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psd1 SHA256 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA256/CC.psd1"
+    $File = ".\CC.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA256).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV12 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV12 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA256 Check Completed"
+    Write-Host "SHA256 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA256 --> SHA512"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psd1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA512" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psd1 SHA512 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA512/CC.psd1"
+    $File = ".\CC.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA512).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV13 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV13 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA512 Check Completed"
+    Write-Host "SHA512 CHECK: $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA512 --> Check 1/3 Completed"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psm1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA1" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psm1 SHA1 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA1/CC.psm1"
+    $File = ".\CC.psm1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA1).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV21 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV21 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA1 Check Completed"
+    Write-Host "SHA1 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA1 --> SHA256"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psm1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA256" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psm1 SHA256 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA256/CC.psm1"
+    $File = ".\CC.psm1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA256).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV22 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV22 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA256 Check Completed"
+    Write-Host "SHA256 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA256 --> SHA512"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psm1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA512" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psm1 SHA512 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA512/CC.psm1"
+    $File = ".\CC.psm1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA512).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV23 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV23 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA512 Check Completed"
+    Write-Host "SHA512 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA512 --> Check 2/3 Completed"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: Lang.psm1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA1" -ForegroundColor Cyan
+
+
+    # Lang.psd1 SHA1 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA1/EN.psd1"
+    $File = ".\Lang.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA1).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV31 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV31 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA1 Check Completed"
+    Write-Host "SHA1 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA1 --> SHA256"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: Lang.psm1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA256" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psm1 SHA256 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA256/EN.psd1"
+    $File = ".\Lang.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA256).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV32 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV32 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA256 Check Completed"
+    Write-Host "SHA256 $HUGÜLTIG"
+    Write-Host "Expected: $ExpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA256 --> SHA512"
+    Write-Host "-- CHECKING CHECKSUM --" -ForegroundColor Cyan
+    Write-Host "File: CC.psd1" -ForegroundColor Cyan
+    Write-Host "Algorithm: SHA512" -ForegroundColor Cyan
+
+    sleep 5
+
+    # CC.psm1 SHA512 Check
+    $ApiUrl = "https://api.magentaweb.de/cc/checksum/SHA512/EN.psd1"
+    $File = ".\Lang.psd1"
+    try {
+        $ExpectedHash = (Invoke-WebRequest -Uri $ApiUrl -ErrorAction Stop).Content.Trim()
+        $ActualHash = (Get-FileHash -LiteralPath $File -Algorithm SHA512).Hash
+
+        if ($ActualHash -eq $ExpectedHash) {
+            $HUGÜLTIG = "PASS"
+            $TÜV33 = "PASS"
+        }
+        else {
+            $HUGÜLTIG = "FAIL"
+            $TÜV33 = "FAIL"
+        }
+    }
+    catch {
+        Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
+    }
+    Write-Host "SHA512 Check Completed"
+    Write-Host "SHA512 $HUGÜLTIG"
+    Write-Host "ExpectedNö, xpectedHash"
+    Write-Host "Got: $ActualHash"
+    Write-Host "SHA512 --> Check 3/3 Completed"
+    Write-Host "-- Checking Results --" -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "CC.psd1:              " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA1:   $TÜV11    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA256: $TÜV12    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA512: $TÜV13    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "CC.psm1:              " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA1:   $TÜV21    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA256: $TÜV22    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA512: $TÜV23    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "Lang.psd1:            " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA1:   $TÜV31    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA256: $TÜV32    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host "  - SHA512: $TÜV33    " -ForegroundColor Black -BackgroundColor Cyan
+    Write-Host ""
+    Write-Host "Adding module/function to Powershell..."
+    if ($InstallChoice -eq 1) {
+        $ModulePath = Join-Path $HOME "Documents\PowerShell\Modules\CrashCounter"
+
+        New-Item -ItemType Directory -Path $ModulePath -Force | Out-Null
+
+        Copy-Item ".\CC.psd1" $ModulePath
+        Copy-Item ".\CC.psm1" $ModulePath
+        Copy-Item ".\Lang.psd1" $ModulePath
+
+        Import-Module (Join-Path $ModulePath "CC.psd1") -Force
+        Write-Host "Local module installation (successfully) completed"
+    } elseif ($InstallChoice -eq 2) {
+        $ModulePath = Join-Path $env:ProgramFiles "WindowsPowerShell\Modules\CrashCounter"
+
+        New-Item -ItemType Directory -Path $ModulePath -Force | Out-Null
+
+        Copy-Item ".\CC.psd1" $ModulePath
+        Copy-Item ".\CC.psm1" $ModulePath
+        Copy-Item ".\Lang.psd1" $ModulePath
+
+        Import-Module (Join-Path $ModulePath "CC.psd1") -Force
+        Write-Host "System-wide module installation (successfully) completed"
+    }
+    Write-Host ""
+    Write-Host ""
+    Write-Host "Thank you for using this installation script."
+    Write-Host ""
+    Write-Host "With kind regards,"
+    Write-Host "- Alexander Gal"
+    Write-Host "- MagentaStudio"
 }
 function DEUTSCH {
     Write-Host 'Sprache „Deutsch“ ausgewählt' -ForegroundColor Green
